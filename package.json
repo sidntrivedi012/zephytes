@@ -1,0 +1,23 @@
+{
+  "name": "zephytes",
+  "version": "1.0.0",
+  "description": "A leaderboard for a Github Organization based on number of commits.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidntrivedi012/zephytes.git"
+  },
+  "author": "sidntrivedi012",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sidntrivedi012/zephytes/issues"
+  },
+  "homepage": "https://github.com/sidntrivedi012/zephytes#readme",
+  "dependencies": {
+    "@octokit/rest": "^16.35.0",
+    "dotenv": "^8.2.0"
+  }
+}
