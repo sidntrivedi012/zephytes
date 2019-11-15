@@ -27,6 +27,9 @@ function getLeaderboard() {
             };
             obj.push(contributor_data);
           }
+          obj.sort(function(a, b) {
+            return b.commits - a.commits;
+          });
           fs.writeFile("final.json", JSON.stringify(obj), function(err) {
             if (err) throw err;
           });
