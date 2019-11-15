@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zephytes</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="../leaderboard.js"></script>
+  </head>
+  <meta charset="UTF-8" />
+  <body>
+    <table>
+      <tr>
+        <th>Contributor</th>
+        <th>Commits</th>
+      </tr>
+      <% for (var i = 0; i < obj.length; i++) { %>
+      <tr>
+        <td><%= obj[i].contributor %></td>
+        <td><%= obj[i].commits %></td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
