@@ -17,17 +17,16 @@ function getLeaderboard() {
       octokit.repos.listCommits({ owner: "osdc", repo: name }).then(commits => {
         commits.data.forEach(commit => {
           var author = commit.commit.author.name;
-          var contributor_data = {
-            contributor: commit.commit.author.name,
-            commits: 1
-          };
           let temp = obj.find(e => e.contributor === author);
           if (temp != undefined) {
             temp.commits += 1;
           } else {
+            var contributor_data = {
+              contributor: commit.commit.author.name,
+              commits: 1
+            };
             obj.push(contributor_data);
           }
-
           fs.writeFile("final.json", JSON.stringify(obj), function(err) {
             if (err) throw err;
           });
