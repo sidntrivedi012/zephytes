@@ -10,6 +10,7 @@ app.get("/", (req, res) => {
   res.render("index", {
     obj: lb.obj
   });
+  console.log(lb.obj);
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
