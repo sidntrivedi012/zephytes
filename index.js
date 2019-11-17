@@ -5,12 +5,18 @@ const lb = require("./leaderboard.js");
 
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  lb.getLeaderboard();
+  let promise = lb.getLeaderboard();
+  promise.then(
+    obj1 =>
+      function() {
+        console.log("loaded");
 
-  res.render("index", {
-    obj: lb.obj
-  });
-  console.log(lb.obj);
+        res.render("index", {
+          obj: obj1
+        });
+      },
+    error => console.log("not loaded")
+  );
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
