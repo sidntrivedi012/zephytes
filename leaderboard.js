@@ -1,10 +1,16 @@
 const Octokit = require("@octokit/rest");
 // const fs = require("fs");
+
+//authentication
 require("dotenv").config();
 const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY
 });
+
+//object array declaration
 let obj = [];
+
+//function to fetch leaderboard
 function getLeaderboard() {
   return new Promise((resolve, reject) => {
     octokit.repos.listForOrg({ org: "osdc" }).then(repos => {
