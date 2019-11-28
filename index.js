@@ -1,16 +1,15 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const lb = require("./leaderboard.js");
+const lb = require("./leaderboard");
 app.set("view engine", "ejs");
-app.get("/", (req, res) => {
+
+app.get("/", async (req, res) => {
   let obj1 = [];
-  let obj2 = lb.getLeaderboard(obj1);
-
-  console.log(obj2);
-
+  await lb.getLeaderboard(obj1);
+  // console.log(lb.lboard);
   res.render("index", {
-    obj: obj2
+    obj: lb.lboard
   });
 });
 

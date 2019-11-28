@@ -7,11 +7,8 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY
 });
 
-//object array declaration
-let obj = [];
-
 //function to fetch leaderboard
-async function getLeaderboard() {
+async function getLeaderboard(obj) {
   await octokit.repos.listForOrg({ org: "osdc" }).then(async repos => {
     for (const data of repos.data) {
       const name = data.name;
@@ -36,11 +33,7 @@ async function getLeaderboard() {
           }
         });
     }
-    console.log(obj);
-    fs.writeFile("data.json", JSON.stringify(obj), function(err) {
-      if (err) throw err;
-    });
+    module.exports.lboard = obj;
   });
 }
-getLeaderboard();
 module.exports = { getLeaderboard };
