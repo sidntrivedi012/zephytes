@@ -6,9 +6,8 @@
 
 - [x] Debug automatic increment of commits.
 - [x] Add async loading of lboard script.
-- [ ] Debug same username and real name bug in the fetched data.
+- [x] Debug same username and real name bug in the fetched data.
 - [ ] Refactor the codebase.
 - [ ] Return from the function.
 - [ ] Add cronjob from updating lboard.
-- [ ] Optimise
 - [ ] Optimise the loading time.

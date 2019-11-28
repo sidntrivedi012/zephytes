@@ -8,10 +8,10 @@ app.get("/", async (req, res) => {
   let obj1 = [];
   let result = await lb.getLeaderboard(obj1);
   // console.log(result);
-  // console.log(lb.lboard);
-  // res.render("index", {
-  //   obj: lb.lboard
-  // });
+  // console.log(result);
+  res.render("index", {
+    obj: result
+  });
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
