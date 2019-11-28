@@ -1,41 +1,39 @@
 const Octokit = require("@octokit/rest");
+const fs = require("fs");
+
+//authentication
 require("dotenv").config();
 const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY
 });
-var fs = require("fs");
-var obj = [
-  {
-    contributor: "name",
-    commits: 0
-  }
-];
-var f = 0;
-function getLeaderboard() {
-  octokit.repos.listForOrg({ org: "osdc" }).then(repos => {
-    repos.data.forEach(({ name }) => {
-      octokit.repos.listCommits({ owner: "osdc", repo: name }).then(commits => {
-        commits.data.forEach(commit => {
-          var author = commit.commit.author.name;
-          let temp = obj.find(e => e.contributor === author);
-          if (temp != undefined) {
-            temp.commits += 1;
-          } else {
-            var contributor_data = {
-              contributor: commit.commit.author.name,
-              commits: 1
-            };
-            obj.push(contributor_data);
+
+//function to fetch leaderboard
+async function getLeaderboard(obj) {
+  await octokit.repos.listForOrg({ org: "osdc" }).then(async repos => {
+    for (const data of repos.data) {
+      const name = data.name;
+      await octokit.repos
+        .listCommits({ owner: "osdc", repo: name })
+        .then(commits => {
+          for (const commit of commits.data) {
+            commit_author = commit.commit.author.name;
+            temp = obj.find(e => e.contributor === commit_author);
+            if (temp != undefined) {
+              temp.commits += 1;
+            } else {
+              var contributor_data = {
+                contributor: commit_author,
+                commits: 1
+              };
+              obj.push(contributor_data);
+            }
+            obj.sort(function(a, b) {
+              return b.commits - a.commits;
+            });
           }
-          obj.sort(function(a, b) {
-            return b.commits - a.commits;
-          });
-          fs.writeFile("final.json", JSON.stringify(obj), function(err) {
-            if (err) throw err;
-          });
         });
-      });
-    });
+    }
+    module.exports.lboard = obj;
   });
 }
-getLeaderboard();
+module.exports = { getLeaderboard };

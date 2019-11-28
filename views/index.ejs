@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zephytes</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="../leaderboard.js"></script>
+  </head>
+  <meta charset="UTF-8" />
+  <body>
+    <!-- <h1>OSDC Commits Leaderboard</h1> -->
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Contributor</th>
+          <th scope="col">Commits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i = 0; i < obj.length; i++) { %>
+        <tr>
+          <th scope="row"><%=i+1%></th>
+          <td><%= obj[i].contributor %></td>
+          <td><%= obj[i].commits %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
