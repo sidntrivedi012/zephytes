@@ -19,11 +19,7 @@
   "dependencies": {
     "@octokit/rest": "^16.35.0",
     "dotenv": "^8.2.0",
-<<<<<<< HEAD
-    "http-server": "^0.11.1"
-=======
     "ejs": "^2.7.2",
     "express": "^4.17.1"
->>>>>>> web
   }
 }
