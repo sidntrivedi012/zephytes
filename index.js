@@ -6,14 +6,14 @@ const port = 3000;
 const lb = require("./leaderboard");
 app.set("view engine", "ejs");
 
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/1 * * * *", async () => {
   let obj1 = [];
   let result = await lb.getLeaderboard(obj1);
   // console.log(result);
   fs.writeFile("data.json", JSON.stringify(result), function(err) {
     if (err) throw err;
   });
-  console.log("updating the data.json every 5 minutes");
+  console.log("updating the data.json every 1 minutes");
 });
 
 app.get("/", async (req, res) => {
