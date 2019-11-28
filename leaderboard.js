@@ -13,11 +13,12 @@ let obj = [];
 //function to fetch leaderboard
 async function getLeaderboard() {
   await octokit.repos.listForOrg({ org: "osdc" }).then(async repos => {
-    await repos.data.forEach(async ({ name }) => {
+    for (const data of repos.data) {
+      const name = data.name;
       await octokit.repos
         .listCommits({ owner: "osdc", repo: name })
-        .then(async commits => {
-          await commits.data.forEach(async commit => {
+        .then(commits => {
+          for (const commit of commits.data) {
             commit_author = commit.commit.author.name;
             temp = obj.find(e => e.contributor === commit_author);
             if (temp != undefined) {
@@ -32,12 +33,12 @@ async function getLeaderboard() {
             obj.sort(function(a, b) {
               return b.commits - a.commits;
             });
-          });
-          console.log(obj);
-          fs.writeFile("data.json", JSON.stringify(obj), function(err) {
-            if (err) throw err;
-          });
+          }
         });
+    }
+    console.log(obj);
+    fs.writeFile("data.json", JSON.stringify(obj), function(err) {
+      if (err) throw err;
     });
   });
 }
