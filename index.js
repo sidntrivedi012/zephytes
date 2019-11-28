@@ -13,7 +13,7 @@ cron.schedule("*/1 * * * *", async () => {
   fs.writeFile("data.json", JSON.stringify(result), function(err) {
     if (err) throw err;
   });
-  console.log("updating the data.json every 1 minutes");
+  console.log("updating the data.json every 5 minutes");
 });
 
 app.get("/", async (req, res) => {
