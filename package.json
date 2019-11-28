@@ -20,6 +20,7 @@
     "@octokit/rest": "^16.35.0",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-cron": "^2.0.3"
   }
 }

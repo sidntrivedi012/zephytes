@@ -8,6 +8,7 @@
 - [x] Add async loading of lboard script.
 - [x] Debug same username and real name bug in the fetched data.
 - [ ] Refactor the codebase.
-- [ ] Return from the function.
-- [ ] Add cronjob from updating lboard.
+- [x] Return from the function.
+- [x] Add cronjob from updating lboard.
+- [x] Use the file to render the data.
 - [ ] Optimise the loading time.

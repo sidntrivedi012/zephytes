@@ -39,7 +39,7 @@ async function getLeaderboard(obj) {
     obj.sort(function(a, b) {
       return b.commits - a.commits;
     });
-    console.log(obj);
+    // console.log(obj);
 
     resolve(obj);
   });
