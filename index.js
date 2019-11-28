@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const lb = require("./leaderboard.js");
-
+const lb = require("./leaderboard");
 app.set("view engine", "ejs");
-app.get("/", (req, res) => {
-  lb.getLeaderboard();
 
+app.get("/", async (req, res) => {
+  let obj1 = [];
+  await lb.getLeaderboard(obj1);
+  // console.log(lb.lboard);
   res.render("index", {
-    obj: lb.obj
+    obj: lb.lboard
   });
-  console.log(lb.obj);
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
