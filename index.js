@@ -6,7 +6,7 @@ const port = 3000;
 const lb = require("./leaderboard");
 app.set("view engine", "ejs");
 
-cron.schedule("*/1 * * * *", async () => {
+cron.schedule("*/5 * * * *", async () => {
   let obj1 = [];
   let result = await lb.getLeaderboard(obj1);
   // console.log(result);
