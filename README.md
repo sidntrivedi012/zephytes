@@ -11,4 +11,5 @@
 - [x] Return from the function.
 - [x] Add cronjob from updating lboard.
 - [x] Use the file to render the data.
-- [ ] Optimise the loading time.
+- [x] Optimise the loading time.
+- [ ] Use try catch block.
