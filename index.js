@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const cron = require("node-cron");
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const lb = require("./leaderboard");
 app.set("view engine", "ejs");
 
