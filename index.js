@@ -17,7 +17,7 @@ const options = {
 mongoose.connect(process.env.DB_URL, options);
 var userData = require("./model/data");
 
-cron.schedule("*/0.5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   console.log("Updating data every 5 mins.");
   let obj1 = [];
   let result = await lb.getLeaderboard(obj1);
