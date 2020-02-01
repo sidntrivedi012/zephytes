@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 var mongoose = require("mongoose");
-const fs = require("fs");
 const cron = require("node-cron");
 const PORT = process.env.PORT || 3000;
 const lb = require("./leaderboard");
+var userData = require("./model/data");
 app.set("view engine", "ejs");
+
+//config for cloud databse
 const options = {
   autoIndex: false, // Don't build indexes
   reconnectTries: 100, // Never stop trying to reconnect
@@ -15,7 +17,6 @@ const options = {
   bufferMaxEntries: 0
 };
 mongoose.connect(process.env.DB_URL, options);
-var userData = require("./model/data");
 
 cron.schedule("*/15 * * * *", async () => {
   console.log("Updating data every 5 mins.");
@@ -55,7 +56,7 @@ cron.schedule("*/15 * * * *", async () => {
   });
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   //populate data from db into a json object here.
   userData
     .find({}, function(err, users) {
